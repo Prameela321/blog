@@ -38,8 +38,8 @@
         <div>
           <div>
             <i></i>
-            		 <div style="background-color:red;float:center;"><?php  echo $this->session->flashdata('search_error') ?></div>
-            		 <div style="background-color:red;float:center"><?php  echo $this->session->flashdata('login') ?></div>  
+            		 <div style="color:red;float:center;"><?php  echo $this->session->flashdata('search_error') ?></div>
+            		 <div style="color:red;float:center"><?php  echo $this->session->flashdata('login') ?></div>  
             <span>list Of Post(s)</span>
           </div>
           <br>
