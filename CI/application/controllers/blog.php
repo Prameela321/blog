@@ -191,12 +191,12 @@ class Blog extends CI_Controller{
 
         if($this->data['post_details'])
         {
-        	echo 'sldjiow';exit;
+
 				$this->load->view('search_view.php',$this->data);
 		}
 		else
 		{
-			echo '123';exit;
+
 			$this->session->set_flashdata('search_error','<div>No result Found</div>');
 			header('Location:'.base_url().'index.php/blog/view_post');
 		}
