@@ -1,0 +1,79 @@
+<?php
+?>
+!
+
+            <i></i><span class="caption-subject font-purple bold uppercase">List All Products</span>
+          </div>
+          <!-- <div class="pull-right" id="add_button"><a href="{{bae_url}}production/landingpage/add_offer" target="_blank" class="btn purple btn-primary"><i class="fa fa-plus"></i>&nbsp;Add New Offer</a></div> -->
+          <div  id="seach_form">
+            <div>
+              <div>
+                <select id="search-type" style="width:120px;">
+                    <!-- <option value="">--Select--</option> -->
+                    <option value="sku">SKU</option>
+                    <option value="name">Name</option>
+                    <option value="ean">EAN</option>
+                </select>
+              </div>
+              <input type="text" id="search-name"  placeholder="Search SKU/Name/EAN">
+              <span >
+                <button type="button"  id="search-product" style="min-width: 46px;"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        
+
+          <div >
+              <div  id="loader">
+                  <img src="{{static_path}}admin/layout3/img/loading-spinner-grey.gif" alt="Loading" />&nbsp;<span  style="display:inline-block;line-height:20px;">Searching</span>
+                  <input type="hidden" name="ajax_load_page" class="ajax_load_page" id="ajax_load_page" value="" />
+              </div>
+              <div  id="search-result"></div>
+          </div>
+
+          <div>
+          {% if row_count %}<div ><div ><div ><span style="float:left;"><b>{{row_count}} Results </b></span></div></div></div>{% endif %}
+          {% include 'partial/pager.html' %}
+            <table  width="auto">
+              <thead>
+                <tr>
+                  <th>PID</th>
+                  <th>Name</th>
+                  <th>SKU</th>
+                  <th>Price</th>
+                  <th>Our Price</th>
+                  <th>Discount(%)</th> 
+                  <th>Stock Status</th> 
+                  <th>Images</th>
+                  <!-- <th class="text-center">Featured</th>  -->
+                  <th>Group</th> 
+                  <th>Active</th> 
+                  <th>Action</th> 
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in result %}
+                  <tr id="p_{{row.id}}" class="p_{{row.id}}">
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.sku }}</td>
+                    <td class="text-center">{{ row.price }}</td>
+                    <td class="text-center">{{ row.our_price }}</td>
+                    <td class="text-center">{{ row.discount }}</td>
+                    <td class="text-center">{% if row.stock_status %}In stock{% else %}Out of stock{% endif %}</td>
+                    <td class="text-center"><a href="{{base_url}}production/product/images/{{row.id}}" target="_blank" title="Add/Edit Images for this Product"><i class="fa fa-image"></i></a></td>
+                    <!-- <td class="text-center">{% if row.featured %}<i class="fa fa-check font-green-jungle"></i>{% else %}<i class="fa fa-times font-red-flamingo"></i>{% endif %}</td> -->
+                    <td class="text-center">{{ row.group }}</td>
+                    <td class="text-center">{% if row.active %}<i class="fa fa-check font-green-jungle"></i>{% else %}<i class="fa fa-times font-red-flamingo"></i>{% endif %}</td>
+                    <td class="text-center">
+                      <a href="{{base_url}}production/product/edit_product/{{row.id}}" target="_blank" title="Edit Product"><i class="fa fa-edit"></i></a>  <!-- {% if user_admin %}  | <a href="javascript:void(0)" onclick="deletefunc('{{row.id}}', this)"><i class="fa fa-trash-o"></i></a> {% else %} {% endif %} -->
+                      </a>
+                    </td> 
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% if row_count %}<div class="toolbar"><div class="pager"><div class="pages"><span style="float:left;"><b>{{row_count}} Results </b></span></div></div></div>{% endif %}
+            {% include 'partial/pager.html' %}
+          </div>
+           
