@@ -7,7 +7,7 @@
 		<body>
 			<form method="post" action="<?php echo base_url()?>index.php/blog/login">
 				<center>
-					<fieldset style="position:relative;top:-0px;left:0px;width:auto;">
+					<fieldset style="position:relative;top:-0px;left:0px;width:200px;">
 							<div style="color:green;float:center;"><?php  echo $this->session->flashdata('register') ?></div>
 					<h3>LOGIN</h3>									
 						<table cellspacing='15'  width = '0px'>
